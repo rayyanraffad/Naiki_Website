@@ -3,60 +3,74 @@ import { motion } from "framer-motion";
 export default function ProblemSolution() {
   return (
     <section
-      className="h-full flex flex-col justify-center px-8 md:px-16 py-12"
-      style={{ backgroundColor: "#1B4332", color: "#fff" }}
+      className="h-full flex flex-col justify-between px-10 md:px-14 py-12 relative overflow-hidden"
+      style={{ backgroundColor: "#1B4332" }}
     >
-      <div className="max-w-7xl mx-auto w-full">
-        <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, ease: "easeOut" }}
-            className="lg:col-span-5 space-y-10"
-          >
-            <div>
-              <h2 className="text-xs uppercase tracking-widest opacity-60 mb-4">The Reality</h2>
-              <div className="text-[80px] md:text-[100px] font-black leading-none mb-3" style={{ color: "#E85D04" }}>2.4M</div>
-              <p className="text-lg opacity-80 max-w-sm leading-relaxed">
-                Youth in our target regions lack access to formal leadership and skill-building programs outside the standard curriculum.
-              </p>
-            </div>
-
-            <div className="h-px w-full opacity-20" style={{ backgroundColor: "#fff" }} />
-
-            <div>
-              <div className="text-[64px] md:text-[80px] font-black leading-none mb-3" style={{ color: "#E85D04" }}>68%</div>
-              <p className="text-lg opacity-80 max-w-sm leading-relaxed">
-                Of community initiatives fail due to a lack of youth integration in the planning phases.
-              </p>
-            </div>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, ease: "easeOut", delay: 0.2 }}
-            className="lg:col-span-7 lg:pl-12 flex flex-col justify-center"
-          >
-            <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-8 leading-tight">
-              The solution requires radical participation.
-            </h2>
-            <div className="space-y-5 text-lg opacity-85 leading-relaxed">
-              <p>
-                We can't solve systemic issues with temporary patches. The solution demands equipping the next generation with the exact tools they need to dismantle the barriers they face.
-              </p>
-              <p>
-                Naiki bypasses traditional top-down intervention. We insert resources directly into youth networks. We train facilitators, fund youth-led projects, and create platforms where young voices command the room.
-              </p>
-              <p className="font-semibold opacity-100">
-                When a young person realizes their voice has structural weight, everything changes.
-              </p>
-            </div>
-          </motion.div>
-        </div>
+      {/* Decorative large ghost text */}
+      <div
+        className="absolute inset-0 flex items-center justify-center select-none pointer-events-none overflow-hidden"
+        style={{ color: "rgba(255,255,255,0.025)" }}
+      >
+        <span className="text-[40vw] font-black leading-none">68</span>
       </div>
+
+      <div className="flex items-center justify-between relative">
+        <span className="text-xs font-black tracking-[0.25em] uppercase" style={{ color: "#E85D04" }}>
+          The Reality
+        </span>
+        <span className="text-xs font-medium tracking-widest hidden md:block" style={{ color: "rgba(255,255,255,0.3)" }}>
+          03 / 09
+        </span>
+      </div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 32 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+        className="flex-1 flex flex-col justify-center py-8 relative"
+      >
+        <div className="grid md:grid-cols-2 gap-12 items-end mb-16">
+          <div>
+            <div
+              className="font-black leading-none tracking-tighter"
+              style={{ fontSize: "clamp(5rem, 18vw, 16rem)", color: "#E85D04" }}
+            >
+              2.4M
+            </div>
+            <p className="text-xl mt-4 max-w-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.65)" }}>
+              Youth in our target regions lack access to formal leadership programs outside the standard curriculum.
+            </p>
+          </div>
+          <div>
+            <div
+              className="font-black leading-none tracking-tighter"
+              style={{ fontSize: "clamp(5rem, 18vw, 16rem)", color: "rgba(255,255,255,0.15)" }}
+            >
+              68%
+            </div>
+            <p className="text-xl mt-4 max-w-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.65)" }}>
+              Of community initiatives fail due to a lack of youth integration in the planning phases.
+            </p>
+          </div>
+        </div>
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 16 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.7, delay: 0.2 }}
+        className="relative"
+      >
+        <div className="h-px w-full mb-8" style={{ backgroundColor: "rgba(255,255,255,0.12)" }} />
+        <h2
+          className="font-bold leading-tight max-w-3xl"
+          style={{ fontSize: "clamp(1.5rem, 3.5vw, 3rem)", color: "rgba(255,255,255,0.9)" }}
+        >
+          The solution requires radical participation — equipping the next generation with the tools to dismantle the barriers they face.
+        </h2>
+      </motion.div>
     </section>
   );
 }

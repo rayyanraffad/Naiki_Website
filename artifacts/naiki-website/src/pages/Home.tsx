@@ -9,6 +9,7 @@ import Gallery from "@/components/Gallery";
 import GetInvolved from "@/components/GetInvolved";
 import Footer from "@/components/Footer";
 import StickyCard from "@/components/StickyCard";
+import Ticker from "@/components/Ticker";
 
 export default function Home() {
   return (
@@ -16,10 +17,10 @@ export default function Home() {
       <Nav />
       <main className="pt-6 pb-32">
         <StickyCard index={0}>
-          <div id="hero">
-            <Hero />
-          </div>
+          <Hero />
         </StickyCard>
+
+        <Ticker />
 
         <StickyCard index={1}>
           <div id="mission">

@@ -9,67 +9,92 @@ function Counter({ from = 0, to, duration = 2 }: { from?: number; to: number; du
   useEffect(() => {
     if (!isInView) return;
     let startTime: number;
-    let animationFrame: number;
-    const animate = (timestamp: number) => {
-      if (!startTime) startTime = timestamp;
-      const progress = Math.min((timestamp - startTime) / (duration * 1000), 1);
-      const eased = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+    let frame: number;
+    const animate = (ts: number) => {
+      if (!startTime) startTime = ts;
+      const p = Math.min((ts - startTime) / (duration * 1000), 1);
+      const eased = p === 1 ? 1 : 1 - Math.pow(2, -10 * p);
       setCount(Math.floor(from + (to - from) * eased));
-      if (progress < 1) animationFrame = requestAnimationFrame(animate);
+      if (p < 1) frame = requestAnimationFrame(animate);
     };
-    animationFrame = requestAnimationFrame(animate);
-    return () => cancelAnimationFrame(animationFrame);
+    frame = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(frame);
   }, [isInView, from, to, duration]);
 
   return <span ref={ref}>{count.toLocaleString()}</span>;
 }
 
 const stats = [
-  { value: 2400, suffix: "+", label: "Youth Reached", desc: "Engaged in core leadership and education programs since inception." },
-  { value: 85, suffix: "%", label: "Completion Rate", desc: "Of participants finish the full 6-month intensive training." },
-  { value: 120, suffix: "+", label: "Active Volunteers", desc: "Mentors and community leaders dedicating their time weekly." },
-  { value: 15, suffix: "", label: "Communities", desc: "Distinct neighborhoods currently hosting active Naiki chapters." },
+  { value: 2400, suffix: "+", label: "Youth Reached", desc: "Engaged in core programs since inception." },
+  { value: 85, suffix: "%", label: "Completion", desc: "Finish the full 6-month training." },
+  { value: 120, suffix: "+", label: "Volunteers", desc: "Mentors dedicating time weekly." },
+  { value: 15, suffix: "", label: "Communities", desc: "Hosting active Naiki chapters." },
 ];
 
 export default function Impact() {
   return (
-    <section id="impact" className="h-full flex flex-col justify-center px-8 md:px-16 py-12">
-      <div className="max-w-7xl mx-auto w-full">
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mb-16"
-        >
-          <span className="text-xs font-bold tracking-[0.2em] uppercase text-primary/70">Measurable Impact</span>
-          <p className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight max-w-2xl mt-3">
-            Numbers that represent shifted trajectories and changed lives.
-          </p>
-        </motion.div>
+    <section
+      id="impact"
+      className="h-full flex flex-col px-10 md:px-14 py-12 relative overflow-hidden"
+    >
+      {/* Ghost word decoration */}
+      <div
+        className="absolute right-0 bottom-0 font-black leading-none select-none pointer-events-none"
+        style={{ color: "rgba(27,67,50,0.04)", fontSize: "30vw" }}
+      >
+        DATA
+      </div>
 
-        <motion.div
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, margin: "-80px" }}
-          variants={{ hidden: { opacity: 0 }, show: { opacity: 1, transition: { staggerChildren: 0.15 } } }}
-          className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6"
+      <div className="flex items-center justify-between relative">
+        <span className="text-xs font-black tracking-[0.25em] uppercase" style={{ color: "#1B4332" }}>
+          Measurable Impact
+        </span>
+        <span className="text-xs font-medium tracking-widest text-muted-foreground hidden md:block">05 / 09</span>
+      </div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        className="mt-8 mb-12 relative"
+      >
+        <h2
+          className="font-black leading-tight tracking-tight max-w-2xl"
+          style={{ fontSize: "clamp(2.2rem, 5vw, 4.5rem)", color: "#111827" }}
         >
-          {stats.map((stat, i) => (
-            <motion.div
-              key={i}
-              variants={{ hidden: { opacity: 0, y: 32 }, show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut" } } }}
-              className="flex flex-col"
+          Numbers that represent shifted trajectories.
+        </h2>
+      </motion.div>
+
+      <div className="flex-1 grid grid-cols-2 lg:grid-cols-4 gap-6 relative">
+        {stats.map((stat, i) => (
+          <motion.div
+            key={i}
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: i * 0.1 }}
+            className="flex flex-col justify-between rounded-[24px] p-8 border"
+            style={{ borderColor: "rgba(0,0,0,0.07)", backgroundColor: i === 0 ? "#1B4332" : "#fff" }}
+          >
+            <div
+              className="text-5xl md:text-6xl xl:text-7xl font-black leading-none tracking-tighter mb-4 flex items-baseline gap-1"
+              style={{ color: i === 0 ? "#E85D04" : "#1B4332" }}
             >
-              <div className="text-5xl md:text-6xl lg:text-7xl font-black mb-3 flex items-baseline" style={{ color: "#1B4332" }}>
-                <Counter to={stat.value} />
-                <span>{stat.suffix}</span>
-              </div>
-              <h3 className="text-lg font-bold mb-2">{stat.label}</h3>
-              <p className="text-muted-foreground leading-relaxed text-sm">{stat.desc}</p>
-            </motion.div>
-          ))}
-        </motion.div>
+              <Counter to={stat.value} />
+              <span>{stat.suffix}</span>
+            </div>
+            <div>
+              <h3 className="text-lg font-bold mb-1" style={{ color: i === 0 ? "#fff" : "#111827" }}>
+                {stat.label}
+              </h3>
+              <p className="text-sm leading-relaxed" style={{ color: i === 0 ? "rgba(255,255,255,0.55)" : "#9CA3AF" }}>
+                {stat.desc}
+              </p>
+            </div>
+          </motion.div>
+        ))}
       </div>
     </section>
   );
