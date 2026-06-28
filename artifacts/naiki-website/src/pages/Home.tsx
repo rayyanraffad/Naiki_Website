@@ -15,52 +15,17 @@ export default function Home() {
   return (
     <>
       <Nav />
-      <main className="pt-6 pb-32">
-        <StickyCard index={0}>
-          <Hero />
-        </StickyCard>
-
+      <main className="pt-6 pb-24">
+        <StickyCard index={0}><Hero /></StickyCard>
         <Ticker />
-
-        <StickyCard index={1}>
-          <div id="mission">
-            <Mission />
-          </div>
-        </StickyCard>
-
-        <StickyCard index={2}>
-          <ProblemSolution />
-        </StickyCard>
-
-        <StickyCard index={3}>
-          <div id="programs">
-            <Programs />
-          </div>
-        </StickyCard>
-
-        <StickyCard index={4}>
-          <div id="impact">
-            <Impact />
-          </div>
-        </StickyCard>
-
-        <StickyCard index={5}>
-          <div id="stories">
-            <Stories />
-          </div>
-        </StickyCard>
-
-        <StickyCard index={6}>
-          <Gallery />
-        </StickyCard>
-
-        <StickyCard index={7}>
-          <GetInvolved />
-        </StickyCard>
-
-        <StickyCard index={8}>
-          <Footer />
-        </StickyCard>
+        <StickyCard index={1}><Mission /></StickyCard>
+        <StickyCard index={2}><ProblemSolution /></StickyCard>
+        <StickyCard index={3}><Programs /></StickyCard>
+        <StickyCard index={4}><Impact /></StickyCard>
+        <StickyCard index={5}><Stories /></StickyCard>
+        <StickyCard index={6}><Gallery /></StickyCard>
+        <StickyCard index={7}><GetInvolved /></StickyCard>
+        <StickyCard index={8}><Footer /></StickyCard>
       </main>
     </>
   );

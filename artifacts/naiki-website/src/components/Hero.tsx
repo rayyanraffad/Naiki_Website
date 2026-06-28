@@ -1,132 +1,123 @@
 import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
 
 const words = ["Breaking", "barriers", "with"];
 
 export default function Hero() {
   return (
-    <section className="h-full flex flex-col md:flex-row overflow-hidden">
-      {/* Left — forest green editorial panel */}
+    <section className="h-full flex flex-col lg:flex-row overflow-hidden">
+      {/* ── Left: dark green editorial panel ── */}
       <div
-        className="flex-[55] flex flex-col justify-between px-10 md:px-14 py-12 relative overflow-hidden"
+        className="flex-[52] flex flex-col justify-between px-10 md:px-14 py-10 relative overflow-hidden"
         style={{ backgroundColor: "#1B4332" }}
       >
-        {/* Decorative large ghost text */}
+        {/* Ghost watermark – top-right, safely away from content */}
         <div
-          className="absolute -bottom-8 -left-4 text-[240px] md:text-[320px] font-black leading-none select-none pointer-events-none"
-          style={{ color: "rgba(255,255,255,0.03)" }}
+          aria-hidden="true"
+          className="pointer-events-none select-none absolute top-0 right-0 font-black leading-none"
+          style={{ fontSize: "clamp(12rem,28vw,24rem)", color: "rgba(255,255,255,0.04)", lineHeight: 1 }}
         >
           NK
         </div>
 
-        {/* Top label row */}
-        <div className="flex items-center justify-between">
-          <motion.span
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6 }}
-            className="text-xs font-black tracking-[0.25em] uppercase"
-            style={{ color: "#E85D04" }}
-          >
+        {/* Top bar */}
+        <div className="relative flex items-center justify-between">
+          <span className="text-[11px] font-black tracking-[0.26em] uppercase" style={{ color: "#E85D04" }}>
             Naiki — Est. 2018
-          </motion.span>
-          <span className="text-xs font-medium tracking-widest opacity-30 text-white hidden md:block">
+          </span>
+          <span className="text-[11px] font-medium tracking-widest hidden md:block" style={{ color: "rgba(255,255,255,0.28)" }}>
             01 / 09
           </span>
         </div>
 
-        {/* Main headline */}
-        <div className="flex-1 flex flex-col justify-center py-8">
-          <div className="overflow-hidden mb-2">
+        {/* Headline */}
+        <div className="relative flex-1 flex flex-col justify-center py-6">
+          <div className="overflow-hidden">
             {words.map((word, i) => (
               <motion.div
                 key={word}
-                initial={{ y: "110%" }}
+                initial={{ y: "105%" }}
                 animate={{ y: 0 }}
-                transition={{ duration: 0.7, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
-                className="text-white font-black leading-[0.85] tracking-tighter"
-                style={{ fontSize: "clamp(3.5rem, 8vw, 7.5rem)" }}
+                transition={{ duration: 0.65, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
+                className="font-black tracking-tighter leading-[0.87] text-white"
+                style={{ fontSize: "clamp(3rem, 7.5vw, 7rem)" }}
               >
                 {word}
               </motion.div>
             ))}
             <motion.div
-              initial={{ y: "110%" }}
+              initial={{ y: "105%" }}
               animate={{ y: 0 }}
-              transition={{ duration: 0.7, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-              className="font-black leading-[0.85] tracking-tighter"
-              style={{ fontSize: "clamp(3.5rem, 8vw, 7.5rem)", color: "#E85D04" }}
+              transition={{ duration: 0.65, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+              className="font-black tracking-tighter leading-[0.87]"
+              style={{ fontSize: "clamp(3rem, 7.5vw, 7rem)", color: "#E85D04" }}
             >
               education.
             </motion.div>
           </div>
 
           <motion.p
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.5 }}
-            className="text-lg max-w-sm mt-8 leading-relaxed"
-            style={{ color: "rgba(255,255,255,0.55)" }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+            className="mt-7 text-base md:text-lg leading-relaxed max-w-xs"
+            style={{ color: "rgba(255,255,255,0.52)" }}
           >
-            Empowering youth with voice, leadership, and skills. Building tomorrow's leaders through community action.
+            Empowering youth with voice, leadership &amp; skills to build tomorrow's communities.
           </motion.p>
         </div>
 
-        {/* CTA */}
+        {/* CTAs */}
         <motion.div
-          initial={{ opacity: 0, y: 12 }}
+          initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.65 }}
-          className="flex flex-wrap gap-3"
+          transition={{ duration: 0.55, delay: 0.65 }}
+          className="relative flex flex-wrap gap-3"
         >
-          <Button
-            size="lg"
-            className="rounded-full h-13 px-9 font-bold text-sm"
-            style={{ backgroundColor: "#E85D04", color: "#fff", border: "none" }}
+          <button
+            className="inline-flex items-center justify-center rounded-full font-bold text-sm text-white px-8 h-12 border-0 cursor-pointer !bg-[#E85D04] hover:!bg-[#cf5203] transition-colors"
             data-testid="hero-donate-btn"
           >
             Donate Now
-          </Button>
-          <Button
-            size="lg"
-            variant="ghost"
-            className="rounded-full h-13 px-9 font-bold text-sm border"
-            style={{ color: "white", borderColor: "rgba(255,255,255,0.25)" }}
+          </button>
+          <button
+            className="inline-flex items-center justify-center rounded-full font-bold text-sm px-8 h-12 border cursor-pointer bg-transparent"
+            style={{ color: "rgba(255,255,255,0.82)", borderColor: "rgba(255,255,255,0.28)" }}
             data-testid="hero-involved-btn"
           >
             Get Involved
-          </Button>
+          </button>
         </motion.div>
       </div>
 
-      {/* Right — full-bleed image */}
-      <motion.div
-        className="flex-[45] relative overflow-hidden min-h-[50vh] md:min-h-0"
-        initial={{ opacity: 0, scale: 1.05 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1.1, ease: "easeOut" }}
-      >
-        <img
+      {/* ── Right: full-bleed image ── */}
+      <div className="flex-[48] relative overflow-hidden min-h-[220px]">
+        <motion.img
           src="/src/assets/images/hero.png"
-          alt="Diverse youth students in community classroom"
+          alt="Youth students in community classroom"
           className="absolute inset-0 w-full h-full object-cover"
+          initial={{ scale: 1.06, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 1.1, ease: "easeOut" }}
         />
-        {/* Subtle vignette on left edge to blend into green panel */}
+        {/* Left edge blend */}
         <div
-          className="absolute inset-y-0 left-0 w-20 pointer-events-none"
-          style={{ background: "linear-gradient(to right, rgba(27,67,50,0.5), transparent)" }}
+          className="absolute inset-y-0 left-0 w-16 pointer-events-none"
+          style={{ background: "linear-gradient(to right, rgba(27,67,50,0.45), transparent)" }}
         />
-        {/* Floating stat badge */}
+        {/* Floating stat chip */}
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.9 }}
-          className="absolute bottom-10 left-8 bg-white rounded-2xl px-6 py-4 shadow-2xl"
+          transition={{ duration: 0.55, delay: 0.85 }}
+          className="absolute bottom-8 left-8 rounded-2xl px-6 py-4 shadow-2xl"
+          style={{ backgroundColor: "rgba(255,255,255,0.95)", backdropFilter: "blur(8px)" }}
         >
-          <div className="text-3xl font-black" style={{ color: "#1B4332" }}>2,400+</div>
-          <div className="text-xs font-bold tracking-widest uppercase text-muted-foreground mt-0.5">Youth Reached</div>
+          <div className="text-2xl font-black" style={{ color: "#1B4332" }}>2,400+</div>
+          <div className="text-[11px] font-bold tracking-widest uppercase mt-0.5" style={{ color: "#6B7280" }}>
+            Youth Reached
+          </div>
         </motion.div>
-      </motion.div>
+      </div>
     </section>
   );
 }

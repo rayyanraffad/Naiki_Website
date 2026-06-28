@@ -4,70 +4,83 @@ import { motion, AnimatePresence } from "framer-motion";
 const stories = [
   {
     quote: "Naiki didn't just teach me how to speak in public. They showed me that my voice was something the community actually needed to hear.",
-    author: "Sarah M.",
-    role: "Leadership Program Alum",
+    author: "Sarah M.", role: "Leadership Program Alum",
     img: "/src/assets/images/story1.png",
   },
   {
-    quote: "I thought volunteering meant just showing up to pack boxes. Here, it meant sitting down with a young person and helping them map out their entire future.",
-    author: "David T.",
-    role: "Volunteer Mentor",
+    quote: "I thought volunteering meant just showing up to pack boxes. Here it meant sitting down with a young person and helping them map out their entire future.",
+    author: "David T.", role: "Volunteer Mentor",
     img: "/src/assets/images/story2.png",
   },
 ];
 
 export default function Stories() {
-  const [currentIndex, setCurrentIndex] = useState(0);
-
+  const [idx, setIdx] = useState(0);
   useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % stories.length);
-    }, 6000);
-    return () => clearInterval(timer);
+    const t = setInterval(() => setIdx(p => (p + 1) % stories.length), 7000);
+    return () => clearInterval(t);
   }, []);
 
   return (
     <section id="stories" className="h-full relative overflow-hidden">
       <AnimatePresence mode="wait">
         <motion.div
-          key={currentIndex}
+          key={idx}
+          className="absolute inset-0"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 1.2, ease: "easeInOut" }}
-          className="absolute inset-0"
+          transition={{ duration: 1.1, ease: "easeInOut" }}
         >
-          <div className="absolute inset-0 bg-black/45 z-10" />
-          <img
-            src={stories[currentIndex].img}
-            alt={stories[currentIndex].author}
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 z-20 flex flex-col justify-end p-10 md:p-16 lg:p-24 text-white">
-            <div className="max-w-4xl">
-              <span className="text-xs font-bold tracking-[0.2em] uppercase opacity-60 mb-6 block">Their Story</span>
-              <p className="text-2xl md:text-4xl lg:text-5xl font-bold leading-tight mb-8">
-                "{stories[currentIndex].quote}"
-              </p>
-              <div>
-                <p className="text-lg font-bold">{stories[currentIndex].author}</p>
-                <p className="opacity-70">{stories[currentIndex].role}</p>
-              </div>
-            </div>
-          </div>
+          <img src={stories[idx].img} alt={stories[idx].author} className="w-full h-full object-cover" />
+          <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(0,0,0,0.75) 50%, rgba(0,0,0,0.25) 100%)" }} />
         </motion.div>
       </AnimatePresence>
 
-      <div className="absolute bottom-10 right-10 z-30 flex gap-3">
-        {stories.map((_, i) => (
-          <button
-            key={i}
-            onClick={() => setCurrentIndex(i)}
-            className={`h-1 transition-all duration-400 rounded-full ${i === currentIndex ? "bg-white w-10" : "bg-white/30 w-4"}`}
-            aria-label={`Go to story ${i + 1}`}
-            data-testid={`story-dot-${i}`}
-          />
-        ))}
+      {/* Content */}
+      <div className="absolute inset-0 flex flex-col justify-between p-10 md:p-14 text-white z-10">
+        <div className="flex items-center justify-between">
+          <span className="text-[11px] font-black tracking-[0.26em] uppercase" style={{ color: "rgba(255,255,255,0.45)" }}>
+            Their Story
+          </span>
+          <span className="text-[11px] font-medium tracking-widest" style={{ color: "rgba(255,255,255,0.28)" }}>06 / 09</span>
+        </div>
+
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={idx}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="max-w-4xl"
+          >
+            <p
+              className="font-bold leading-tight mb-6"
+              style={{ fontSize: "clamp(1.5rem, 3.5vw, 3.25rem)" }}
+            >
+              "{stories[idx].quote}"
+            </p>
+            <div>
+              <p className="font-bold text-base">{stories[idx].author}</p>
+              <p className="text-sm" style={{ color: "rgba(255,255,255,0.55)" }}>{stories[idx].role}</p>
+            </div>
+          </motion.div>
+        </AnimatePresence>
+
+        {/* Dots */}
+        <div className="flex items-center gap-2 self-end">
+          {stories.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => setIdx(i)}
+              className="h-1 rounded-full transition-all duration-300 border-0 cursor-pointer p-0"
+              style={{ width: i === idx ? "2.5rem" : "1rem", backgroundColor: i === idx ? "#fff" : "rgba(255,255,255,0.3)" }}
+              aria-label={`Story ${i + 1}`}
+              data-testid={`story-dot-${i}`}
+            />
+          ))}
+        </div>
       </div>
     </section>
   );

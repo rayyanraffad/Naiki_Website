@@ -3,73 +3,78 @@ import { motion } from "framer-motion";
 export default function ProblemSolution() {
   return (
     <section
-      className="h-full flex flex-col justify-between px-10 md:px-14 py-12 relative overflow-hidden"
+      className="h-full flex flex-col px-10 md:px-14 py-10 relative overflow-hidden"
       style={{ backgroundColor: "#1B4332" }}
     >
-      {/* Decorative large ghost text */}
+      {/* Ghost background number */}
       <div
-        className="absolute inset-0 flex items-center justify-center select-none pointer-events-none overflow-hidden"
-        style={{ color: "rgba(255,255,255,0.025)" }}
+        aria-hidden="true"
+        className="pointer-events-none select-none absolute inset-0 flex items-center justify-end pr-8 font-black leading-none"
+        style={{ fontSize: "clamp(14rem,38vw,32rem)", color: "rgba(255,255,255,0.04)", lineHeight: 1 }}
       >
-        <span className="text-[40vw] font-black leading-none">68</span>
+        68
       </div>
 
-      <div className="flex items-center justify-between relative">
-        <span className="text-xs font-black tracking-[0.25em] uppercase" style={{ color: "#E85D04" }}>
+      {/* Top bar */}
+      <div className="relative flex items-center justify-between mb-4">
+        <span className="text-[11px] font-black tracking-[0.26em] uppercase" style={{ color: "#E85D04" }}>
           The Reality
         </span>
-        <span className="text-xs font-medium tracking-widest hidden md:block" style={{ color: "rgba(255,255,255,0.3)" }}>
+        <span className="text-[11px] font-medium tracking-widest hidden md:block" style={{ color: "rgba(255,255,255,0.28)" }}>
           03 / 09
         </span>
       </div>
 
+      {/* Two big stats */}
       <motion.div
-        initial={{ opacity: 0, y: 32 }}
+        initial={{ opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.8 }}
-        className="flex-1 flex flex-col justify-center py-8 relative"
+        transition={{ duration: 0.7 }}
+        className="relative flex-1 flex flex-col md:flex-row gap-10 md:gap-0 items-start justify-center"
       >
-        <div className="grid md:grid-cols-2 gap-12 items-end mb-16">
-          <div>
-            <div
-              className="font-black leading-none tracking-tighter"
-              style={{ fontSize: "clamp(5rem, 18vw, 16rem)", color: "#E85D04" }}
-            >
-              2.4M
-            </div>
-            <p className="text-xl mt-4 max-w-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.65)" }}>
-              Youth in our target regions lack access to formal leadership programs outside the standard curriculum.
-            </p>
+        {/* Stat 1 */}
+        <div className="flex-1 flex flex-col justify-center md:border-r md:pr-12" style={{ borderColor: "rgba(255,255,255,0.1)" }}>
+          <div
+            className="font-black tracking-tighter leading-none mb-4"
+            style={{ fontSize: "clamp(5rem, 14vw, 13rem)", color: "#E85D04" }}
+          >
+            2.4M
           </div>
-          <div>
-            <div
-              className="font-black leading-none tracking-tighter"
-              style={{ fontSize: "clamp(5rem, 18vw, 16rem)", color: "rgba(255,255,255,0.15)" }}
-            >
-              68%
-            </div>
-            <p className="text-xl mt-4 max-w-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.65)" }}>
-              Of community initiatives fail due to a lack of youth integration in the planning phases.
-            </p>
+          <p className="text-base md:text-lg leading-relaxed max-w-sm" style={{ color: "rgba(255,255,255,0.6)" }}>
+            Youth in our target regions lack access to formal leadership and skill-building programs outside the standard curriculum.
+          </p>
+        </div>
+
+        {/* Stat 2 */}
+        <div className="flex-1 flex flex-col justify-center md:pl-12">
+          <div
+            className="font-black tracking-tighter leading-none mb-4"
+            style={{ fontSize: "clamp(5rem, 14vw, 13rem)", color: "rgba(255,255,255,0.18)" }}
+          >
+            68%
           </div>
+          <p className="text-base md:text-lg leading-relaxed max-w-sm" style={{ color: "rgba(255,255,255,0.6)" }}>
+            Of community initiatives fail due to a lack of youth integration and perspective in the planning phases.
+          </p>
         </div>
       </motion.div>
 
+      {/* Bottom thesis */}
       <motion.div
-        initial={{ opacity: 0, y: 16 }}
+        initial={{ opacity: 0, y: 12 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.7, delay: 0.2 }}
-        className="relative"
+        transition={{ duration: 0.6, delay: 0.2 }}
+        className="relative pt-6 border-t"
+        style={{ borderColor: "rgba(255,255,255,0.1)" }}
       >
-        <div className="h-px w-full mb-8" style={{ backgroundColor: "rgba(255,255,255,0.12)" }} />
-        <h2
-          className="font-bold leading-tight max-w-3xl"
-          style={{ fontSize: "clamp(1.5rem, 3.5vw, 3rem)", color: "rgba(255,255,255,0.9)" }}
+        <p
+          className="font-semibold leading-snug max-w-3xl"
+          style={{ fontSize: "clamp(1.1rem, 2.2vw, 1.75rem)", color: "rgba(255,255,255,0.82)" }}
         >
-          The solution requires radical participation — equipping the next generation with the tools to dismantle the barriers they face.
-        </h2>
+          The solution requires radical participation — equipping the next generation with the exact tools to dismantle the barriers they face.
+        </p>
       </motion.div>
     </section>
   );
