@@ -3,77 +3,78 @@ import { motion } from "framer-motion";
 const programs = [
   {
     title: "Education",
-    desc: "Immersive workshops focused on critical thinking, media literacy, and practical skills that schools often miss. We transform learning from passive reception to active creation.",
+    desc: "Immersive workshops on critical thinking, media literacy, and practical skills. Transforming learning from passive reception to active creation.",
     img: "/src/assets/images/education.png",
     alt: "Students engaged in hands-on learning",
   },
   {
     title: "Leadership",
-    desc: "Intensive training for emerging voices. We teach public speaking, project management, and community organizing to ensure the next generation can lead with confidence.",
+    desc: "Intensive training for emerging voices. Public speaking, project management, and community organizing to ensure confidence at every level.",
     img: "/src/assets/images/leadership.png",
     alt: "Youth speaking at event",
   },
   {
     title: "Community Outreach",
-    desc: "Bridging the gap between youth and the wider community. Our programs facilitate direct neighborhood engagement, turning empathy into tangible local action.",
+    desc: "Bridging youth and the wider community. Direct neighborhood engagement, turning empathy into tangible local action.",
     img: "/src/assets/images/community.png",
     alt: "Outdoor community gathering",
   },
   {
     title: "Volunteerism",
-    desc: "Building a culture of service. We organize continuous, high-impact volunteer opportunities that show young people the immediate power of their contribution.",
+    desc: "Building a culture of service. High-impact volunteer opportunities that show young people the immediate power of their contribution.",
     img: "/src/assets/images/volunteer.png",
     alt: "Volunteers working together",
-  }
+  },
 ];
 
 export default function Programs() {
   return (
-    <section id="programs" className="py-40 px-8 md:px-16">
-      <div className="max-w-7xl mx-auto">
-        <div className="mb-20">
-          <h2 className="text-5xl md:text-7xl font-bold tracking-tight mb-6">Our Work</h2>
-          <p className="text-xl text-muted-foreground max-w-2xl">
-            Four pillars of action designed to create self-sustaining cycles of empowerment and community transformation.
-          </p>
-        </div>
+    <section id="programs" className="h-full flex flex-col px-8 md:px-14 py-10">
+      <motion.div
+        initial={{ opacity: 0, y: 16 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        className="mb-8"
+      >
+        <span className="text-xs font-bold tracking-[0.2em] uppercase text-primary/70">Our Work</span>
+        <h2 className="text-4xl md:text-5xl font-bold tracking-tight mt-2">Four pillars of action.</h2>
+      </motion.div>
 
-        <div className="space-y-12">
-          {programs.map((program, i) => (
-            <motion.div 
-              key={program.title}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.6, ease: "easeOut" }}
-              className="group bg-white rounded-[32px] p-8 md:p-12 border border-border shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
-            >
-              <div className={`flex flex-col gap-12 lg:items-center ${i % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'}`}>
-                <div className="lg:w-1/2">
-                  <div className="aspect-[4/3] rounded-2xl overflow-hidden">
-                    <img 
-                      src={program.img} 
-                      alt={program.alt}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    />
-                  </div>
-                </div>
-                <div className="lg:w-1/2 flex flex-col justify-center">
-                  <span className="text-sm font-bold tracking-widest text-primary uppercase mb-4">Program {i + 1}</span>
-                  <h3 className="text-4xl md:text-5xl font-bold mb-6">{program.title}</h3>
-                  <p className="text-xl text-muted-foreground leading-relaxed mb-8">
-                    {program.desc}
-                  </p>
-                  <div>
-                    <button className="text-primary font-bold uppercase tracking-wide text-sm flex items-center gap-2 hover:gap-4 transition-all">
-                      Learn More <span aria-hidden="true">&rarr;</span>
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 flex-1">
+        {programs.map((program, i) => (
+          <motion.div
+            key={program.title}
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: i * 0.08 }}
+            className="group relative rounded-[24px] overflow-hidden cursor-pointer"
+            style={{ backgroundColor: "#111827" }}
+          >
+            <img
+              src={program.img}
+              alt={program.alt}
+              className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-40 group-hover:scale-105 transition-all duration-500"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+            <div className="relative h-full flex flex-col justify-end p-6">
+              <span className="text-xs font-bold tracking-widest uppercase text-white/50 mb-2">
+                Program {String(i + 1).padStart(2, "0")}
+              </span>
+              <h3 className="text-2xl md:text-3xl font-bold text-white mb-3">{program.title}</h3>
+              <p className="text-sm text-white/70 leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                {program.desc}
+              </p>
+              <button
+                className="mt-4 text-xs font-bold uppercase tracking-widest text-white/60 hover:text-white flex items-center gap-2 transition-colors bg-transparent border-none p-0 cursor-pointer"
+                data-testid={`program-link-${program.title.toLowerCase()}`}
+              >
+                Learn More <span>&rarr;</span>
+              </button>
+            </div>
+          </motion.div>
+        ))}
       </div>
     </section>
   );
