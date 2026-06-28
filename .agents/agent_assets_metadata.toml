@@ -1,0 +1,62 @@
+uploads = []
+outputs = []
+
+[[generated]]
+id = "wzvmezqd8Z9z3MmVXb4f6"
+uri = "file://artifacts/naiki-website/src/assets/images/hero.png"
+type = "image"
+title = "documentary hero classroom scene"
+
+[[generated]]
+id = "Fti-L1XHPJTUSthIgNiXI"
+uri = "file://artifacts/naiki-website/src/assets/images/mission.png"
+type = "image"
+title = "mentor volunteering with youth"
+
+[[generated]]
+id = "fd5U4Zdjcm7dWUu5m-2hT"
+uri = "file://artifacts/naiki-website/src/assets/images/education.png"
+type = "image"
+title = "students hands-on learning"
+
+[[generated]]
+id = "YwcNbjkfperaYdeqRFley"
+uri = "file://artifacts/naiki-website/src/assets/images/leadership.png"
+type = "image"
+title = "youth speaking at event"
+
+[[generated]]
+id = "4nkmDZHIaAvo7lcNJTOBk"
+uri = "file://artifacts/naiki-website/src/assets/images/community.png"
+type = "image"
+title = "outdoor community gathering"
+
+[[generated]]
+id = "1lj5Gcj-f7vFahL7QYPCJ"
+uri = "file://artifacts/naiki-website/src/assets/images/volunteer.png"
+type = "image"
+title = "volunteers working together"
+
+[[generated]]
+id = "IgrmtetRgc0qpkWX8QesC"
+uri = "file://artifacts/naiki-website/src/assets/images/story1.png"
+type = "image"
+title = "confident young woman portrait"
+
+[[generated]]
+id = "FFnnb7M7Cjfj_Tk1TtW5C"
+uri = "file://artifacts/naiki-website/src/assets/images/story2.png"
+type = "image"
+title = "hopeful young man portrait"
+
+[[generated]]
+id = "7t1ghPPxl2CNSonyV_TOh"
+uri = "file://artifacts/naiki-website/src/assets/images/gallery1.png"
+type = "image"
+title = "classroom learning wide shot"
+
+[[generated]]
+id = "CRhvgYbVU33kAHAzfXNWT"
+uri = "file://artifacts/naiki-website/src/assets/images/gallery2.png"
+type = "image"
+title = "outdoor diverse gathering candid"
