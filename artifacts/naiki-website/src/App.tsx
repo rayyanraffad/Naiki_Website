@@ -21,7 +21,7 @@ function Router() {
 function App() {
   useEffect(() => {
     const lenis = new Lenis({
-      duration: 1.2,
+      duration: 1.4,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: "vertical",
       gestureOrientation: "vertical",
@@ -43,10 +43,11 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, "")}>
-          <div className="min-h-screen bg-background text-foreground py-8 md:py-12 flex justify-center items-start selection:bg-primary/20">
-            <div className="w-[90vw] max-w-[1600px] bg-card rounded-[32px] border border-border shadow-2xl shadow-black/5 overflow-hidden flex flex-col relative min-h-[90vh]">
-              <Router />
-            </div>
+          <div
+            className="min-h-screen selection:bg-primary/20"
+            style={{ backgroundColor: "#F0EBE3" }}
+          >
+            <Router />
           </div>
         </WouterRouter>
         <Toaster />
