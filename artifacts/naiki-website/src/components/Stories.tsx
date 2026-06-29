@@ -33,17 +33,17 @@ export default function Stories() {
           transition={{ duration: 1.1, ease: "easeInOut" }}
         >
           <img src={stories[idx].img} alt={stories[idx].author} className="w-full h-full object-cover" />
-          <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(0,0,0,0.78) 55%, rgba(0,0,0,0.25) 100%)" }} />
+          <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(22,10,2,0.88) 55%, rgba(22,10,2,0.3) 100%)" }} />
         </motion.div>
       </AnimatePresence>
 
       {/* Content */}
       <div className="absolute inset-0 flex flex-col justify-between p-6 sm:p-10 md:p-14 text-white z-10">
         <div className="flex items-center justify-between">
-          <span className="text-[11px] font-black tracking-[0.26em] uppercase" style={{ color: "rgba(255,255,255,0.45)" }}>
+          <span className="text-[11px] font-black tracking-[0.26em] uppercase" style={{ color: "rgba(200,149,108,0.6)" }}>
             Their Story
           </span>
-          <span className="text-[11px] font-medium tracking-widest" style={{ color: "rgba(255,255,255,0.28)" }}>06 / 09</span>
+          <span className="text-[11px] font-medium tracking-widest" style={{ color: "rgba(200,149,108,0.35)" }}>06 / 09</span>
         </div>
 
         <AnimatePresence mode="wait">
@@ -63,7 +63,7 @@ export default function Stories() {
             </p>
             <div>
               <p className="font-bold text-sm sm:text-base">{stories[idx].author}</p>
-              <p className="text-sm" style={{ color: "rgba(255,255,255,0.55)" }}>{stories[idx].role}</p>
+              <p className="text-sm" style={{ color: "rgba(200,149,108,0.65)" }}>{stories[idx].role}</p>
             </div>
           </motion.div>
         </AnimatePresence>
@@ -75,7 +75,10 @@ export default function Stories() {
               key={i}
               onClick={() => setIdx(i)}
               className="h-1 rounded-full transition-all duration-300 border-0 cursor-pointer p-0"
-              style={{ width: i === idx ? "2.5rem" : "1rem", backgroundColor: i === idx ? "#fff" : "rgba(255,255,255,0.3)" }}
+              style={{
+                width: i === idx ? "2.5rem" : "1rem",
+                backgroundColor: i === idx ? "#C8956C" : "rgba(200,149,108,0.3)",
+              }}
               aria-label={`Story ${i + 1}`}
               data-testid={`story-dot-${i}`}
             />

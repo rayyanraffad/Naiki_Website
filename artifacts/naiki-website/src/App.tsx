@@ -45,7 +45,7 @@ function App() {
         <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, "")}>
           <div
             className="min-h-screen selection:bg-primary/20"
-            style={{ backgroundColor: "#F0EBE3" }}
+            style={{ backgroundColor: "#EDE0CE" }}
           >
             <Router />
           </div>

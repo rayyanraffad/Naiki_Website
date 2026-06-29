@@ -15,19 +15,19 @@ export default function Gallery() {
   const [selected, setSelected] = useState<string | null>(null);
 
   return (
-    <section className="lg:h-full flex flex-col px-6 sm:px-10 md:px-12 py-8 md:py-10 overflow-hidden" style={{ backgroundColor: "#FAFAF8" }}>
+    <section className="lg:h-full flex flex-col px-6 sm:px-10 md:px-12 py-8 md:py-10 overflow-hidden" style={{ backgroundColor: "#FBF4EA" }}>
       {/* Header */}
       <div className="flex items-end justify-between mb-5 sm:mb-6 shrink-0">
         <div>
-          <span className="text-[11px] font-black tracking-[0.26em] uppercase" style={{ color: "#1B4332" }}>Gallery</span>
-          <h2 className="font-black tracking-tighter leading-tight mt-1" style={{ fontSize: "clamp(1.75rem, 4.5vw, 3.75rem)", color: "#111827" }}>
+          <span className="text-[11px] font-black tracking-[0.26em] uppercase" style={{ color: "#8B5040" }}>Gallery</span>
+          <h2 className="font-black tracking-tighter leading-tight mt-1" style={{ fontSize: "clamp(1.75rem, 4.5vw, 3.75rem)", color: "#1C0E04" }}>
             The community<br />in action.
           </h2>
         </div>
         <span className="text-[11px] font-medium tracking-widest text-muted-foreground hidden md:block pb-1">07 / 09</span>
       </div>
 
-      {/* Grid — 2 cols on mobile, 3 cols on sm+, with uniform aspect-ratio cells */}
+      {/* Grid */}
       <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 sm:gap-3 lg:flex-1 lg:min-h-0 min-h-0">
         {images.map((img, i) => (
           <motion.div
@@ -46,7 +46,7 @@ export default function Gallery() {
               alt={img.alt}
               className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
             />
-            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/18 transition-colors duration-300" />
+            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors duration-300" />
           </motion.div>
         ))}
       </div>
@@ -58,7 +58,8 @@ export default function Gallery() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[300] flex items-center justify-center bg-black/92 p-4 sm:p-6"
+            className="fixed inset-0 z-[300] flex items-center justify-center p-4 sm:p-6"
+            style={{ backgroundColor: "rgba(22,10,2,0.94)" }}
             onClick={() => setSelected(null)}
           >
             <button

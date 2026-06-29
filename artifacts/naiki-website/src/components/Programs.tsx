@@ -42,7 +42,7 @@ export default function Programs() {
             <img src={p.img} alt={p.alt} className="w-full h-full object-cover" />
             <div
               className="absolute inset-x-0 bottom-0 h-2/5 pointer-events-none"
-              style={{ background: "linear-gradient(to top, rgba(0,0,0,0.65), transparent)" }}
+              style={{ background: "linear-gradient(to top, rgba(58,26,8,0.75), transparent)" }}
             />
             <div className="absolute bottom-6 left-6 sm:bottom-8 sm:left-10 text-white">
               <div className="text-[11px] font-black tracking-widest uppercase opacity-55 mb-1">{p.tag}</div>
@@ -55,11 +55,11 @@ export default function Programs() {
       {/* ── Tab list — below image on mobile, left on desktop ── */}
       <div
         className="order-2 lg:order-1 flex-[40] flex flex-col px-6 sm:px-10 md:px-12 py-6 sm:py-8 md:py-10 border-t lg:border-t-0 lg:border-r"
-        style={{ borderColor: "rgba(0,0,0,0.07)", backgroundColor: "#FAFAF8" }}
+        style={{ borderColor: "rgba(58,26,8,0.08)", backgroundColor: "#FBF4EA" }}
       >
         {/* Header */}
         <div className="flex items-center justify-between mb-4 sm:mb-6">
-          <span className="text-[11px] font-black tracking-[0.26em] uppercase" style={{ color: "#1B4332" }}>Our Work</span>
+          <span className="text-[11px] font-black tracking-[0.26em] uppercase" style={{ color: "#8B5040" }}>Our Work</span>
           <span className="text-[11px] font-medium tracking-widest text-muted-foreground hidden md:block">04 / 09</span>
         </div>
 
@@ -68,7 +68,7 @@ export default function Programs() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="font-black tracking-tighter leading-[0.9] mb-5 sm:mb-8"
-          style={{ fontSize: "clamp(1.9rem, 4.5vw, 4rem)", color: "#111827" }}
+          style={{ fontSize: "clamp(1.9rem, 4.5vw, 4rem)", color: "#1C0E04" }}
         >
           Four pillars<br />of action.
         </motion.h2>
@@ -84,17 +84,17 @@ export default function Programs() {
               transition={{ delay: i * 0.07 }}
               onClick={() => setActive(i)}
               className="w-full text-left flex items-center gap-4 px-4 sm:px-5 py-3 sm:py-4 rounded-2xl transition-all duration-250 cursor-pointer border-0"
-              style={{ backgroundColor: active === i ? "#1B4332" : "transparent" }}
+              style={{ backgroundColor: active === i ? "#3A1A08" : "transparent" }}
               data-testid={`program-tab-${p.title.toLowerCase().replace(/ /g, "-")}`}
             >
               <span
                 className="text-xs font-black tabular-nums shrink-0 w-6"
-                style={{ color: active === i ? "#E85D04" : "rgba(0,0,0,0.22)" }}
+                style={{ color: active === i ? "#C8956C" : "rgba(58,26,8,0.25)" }}
               >
                 {p.num}
               </span>
               <div className="flex-1 min-w-0">
-                <div className="text-sm sm:text-base font-bold" style={{ color: active === i ? "#fff" : "#111827" }}>
+                <div className="text-sm sm:text-base font-bold" style={{ color: active === i ? "#fff" : "#1C0E04" }}>
                   {p.title}
                 </div>
                 {active === i && (
@@ -102,7 +102,7 @@ export default function Programs() {
                     initial={{ opacity: 0, height: 0 }}
                     animate={{ opacity: 1, height: "auto" }}
                     className="text-xs sm:text-sm mt-1 leading-relaxed"
-                    style={{ color: "rgba(255,255,255,0.55)" }}
+                    style={{ color: "rgba(200,149,108,0.75)" }}
                   >
                     {p.desc}
                   </motion.div>
@@ -111,8 +111,8 @@ export default function Programs() {
               <span
                 className="text-[10px] font-bold tracking-widest uppercase px-2 py-0.5 rounded-full shrink-0"
                 style={{
-                  backgroundColor: active === i ? "rgba(232,93,4,0.18)" : "rgba(0,0,0,0.05)",
-                  color: active === i ? "#E85D04" : "rgba(0,0,0,0.32)",
+                  backgroundColor: active === i ? "rgba(200,149,108,0.18)" : "rgba(58,26,8,0.06)",
+                  color: active === i ? "#C8956C" : "rgba(58,26,8,0.35)",
                 }}
               >
                 {p.tag}
@@ -122,10 +122,10 @@ export default function Programs() {
         </div>
 
         {/* Footer link */}
-        <div className="pt-4 sm:pt-5 border-t mt-4" style={{ borderColor: "rgba(0,0,0,0.07)" }}>
+        <div className="pt-4 sm:pt-5 border-t mt-4" style={{ borderColor: "rgba(58,26,8,0.08)" }}>
           <button
             className="text-sm font-bold flex items-center gap-2 hover:gap-3 transition-all bg-transparent border-none p-0 cursor-pointer"
-            style={{ color: "#1B4332" }}
+            style={{ color: "#8B5040" }}
             data-testid="programs-view-all"
           >
             View all programs <span aria-hidden="true">&rarr;</span>

@@ -17,7 +17,7 @@ export default function Ticker() {
   return (
     <div
       className="w-[90vw] max-w-[1600px] mx-auto my-4 overflow-hidden rounded-[16px] flex items-center"
-      style={{ backgroundColor: "#E85D04", height: "52px" }}
+      style={{ backgroundColor: "#8B5040", height: "52px" }}
     >
       <motion.div
         className="flex items-center gap-0 whitespace-nowrap"
