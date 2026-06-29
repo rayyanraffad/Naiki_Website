@@ -1,8 +1,10 @@
 import { motion } from "framer-motion";
+import { useDonate } from "@/contexts/DonateContext";
 
 const words = ["Breaking", "barriers", "with"];
 
 export default function Hero() {
+  const { openDonate } = useDonate();
   return (
     <section className="lg:h-full flex flex-col lg:flex-row overflow-hidden min-h-[80vh]">
       {/* ── Left: dark panel ── */}
@@ -78,6 +80,7 @@ export default function Hero() {
             style={{ backgroundColor: "#C8956C" }}
             onMouseEnter={e => (e.currentTarget.style.backgroundColor = "#B07D54")}
             onMouseLeave={e => (e.currentTarget.style.backgroundColor = "#C8956C")}
+            onClick={openDonate}
             data-testid="hero-donate-btn"
           >
             Donate Now

@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
+import { useDonate } from "@/contexts/DonateContext";
 
 export default function GetInvolved() {
+  const { openDonate } = useDonate();
   return (
     <section className="lg:h-full flex flex-col px-6 sm:px-10 md:px-14 py-8 md:py-10" style={{ backgroundColor: "#FBF4EA" }}>
       {/* Top bar */}
@@ -46,6 +48,7 @@ export default function GetInvolved() {
             style={{ backgroundColor: "#C8956C" }}
             onMouseEnter={e => (e.currentTarget.style.backgroundColor = "#B07D54")}
             onMouseLeave={e => (e.currentTarget.style.backgroundColor = "#C8956C")}
+            onClick={openDonate}
             data-testid="involved-donate-btn"
           >
             Donate Now

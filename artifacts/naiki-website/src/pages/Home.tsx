@@ -10,10 +10,12 @@ import GetInvolved from "@/components/GetInvolved";
 import Footer from "@/components/Footer";
 import StickyCard from "@/components/StickyCard";
 import Ticker from "@/components/Ticker";
+import DonateModal from "@/components/DonateModal";
+import { DonateProvider } from "@/contexts/DonateContext";
 
 export default function Home() {
   return (
-    <>
+    <DonateProvider>
       <Nav />
       <main className="pt-6 pb-24">
         <StickyCard index={0}><Hero /></StickyCard>
@@ -27,6 +29,7 @@ export default function Home() {
         <StickyCard index={7}><GetInvolved /></StickyCard>
         <StickyCard index={8}><Footer /></StickyCard>
       </main>
-    </>
+      <DonateModal />
+    </DonateProvider>
   );
 }

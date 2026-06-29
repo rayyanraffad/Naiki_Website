@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import { useDonate } from "@/contexts/DonateContext";
 
 const navItems = [
   { label: "Mission", id: "mission" },
@@ -12,6 +13,7 @@ const navItems = [
 
 export default function Nav() {
   const [open, setOpen] = useState(false);
+  const { openDonate } = useDonate();
 
   const scrollTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
@@ -58,6 +60,7 @@ export default function Nav() {
             <Button
               className="rounded-full px-5 sm:px-7 font-bold text-sm h-9 border-none"
               style={{ backgroundColor: "#8B5040", color: "#fff" }}
+              onClick={openDonate}
               data-testid="nav-donate-btn"
             >
               Donate
@@ -102,6 +105,7 @@ export default function Nav() {
                 <Button
                   className="w-full rounded-xl font-bold text-sm h-11 border-none"
                   style={{ backgroundColor: "#8B5040", color: "#fff" }}
+                  onClick={openDonate}
                 >
                   Donate to Naiki
                 </Button>
