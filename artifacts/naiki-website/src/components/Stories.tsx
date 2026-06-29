@@ -22,7 +22,7 @@ export default function Stories() {
   }, []);
 
   return (
-    <section id="stories" className="h-full relative overflow-hidden">
+    <section id="stories" className="lg:h-full relative overflow-hidden min-h-[60vh]">
       <AnimatePresence mode="wait">
         <motion.div
           key={idx}
@@ -33,12 +33,12 @@ export default function Stories() {
           transition={{ duration: 1.1, ease: "easeInOut" }}
         >
           <img src={stories[idx].img} alt={stories[idx].author} className="w-full h-full object-cover" />
-          <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(0,0,0,0.75) 50%, rgba(0,0,0,0.25) 100%)" }} />
+          <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(0,0,0,0.78) 55%, rgba(0,0,0,0.25) 100%)" }} />
         </motion.div>
       </AnimatePresence>
 
       {/* Content */}
-      <div className="absolute inset-0 flex flex-col justify-between p-10 md:p-14 text-white z-10">
+      <div className="absolute inset-0 flex flex-col justify-between p-6 sm:p-10 md:p-14 text-white z-10">
         <div className="flex items-center justify-between">
           <span className="text-[11px] font-black tracking-[0.26em] uppercase" style={{ color: "rgba(255,255,255,0.45)" }}>
             Their Story
@@ -56,13 +56,13 @@ export default function Stories() {
             className="max-w-4xl"
           >
             <p
-              className="font-bold leading-tight mb-6"
-              style={{ fontSize: "clamp(1.5rem, 3.5vw, 3.25rem)" }}
+              className="font-bold leading-tight mb-5 sm:mb-6"
+              style={{ fontSize: "clamp(1.2rem, 3.5vw, 3.25rem)" }}
             >
               "{stories[idx].quote}"
             </p>
             <div>
-              <p className="font-bold text-base">{stories[idx].author}</p>
+              <p className="font-bold text-sm sm:text-base">{stories[idx].author}</p>
               <p className="text-sm" style={{ color: "rgba(255,255,255,0.55)" }}>{stories[idx].role}</p>
             </div>
           </motion.div>

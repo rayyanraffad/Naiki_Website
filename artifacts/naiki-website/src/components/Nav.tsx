@@ -1,9 +1,21 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { Menu, X } from "lucide-react";
+
+const navItems = [
+  { label: "Mission", id: "mission" },
+  { label: "Programs", id: "programs" },
+  { label: "Impact", id: "impact" },
+  { label: "Stories", id: "stories" },
+];
 
 export default function Nav() {
+  const [open, setOpen] = useState(false);
+
   const scrollTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    setOpen(false);
   };
 
   return (
@@ -11,59 +23,95 @@ export default function Nav() {
       initial={{ opacity: 0, y: -16 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className="fixed top-0 left-0 right-0 z-[200] flex justify-center py-4 px-8"
+      className="fixed top-0 left-0 right-0 z-[200] flex justify-center py-3 sm:py-4 px-4 sm:px-8"
     >
       <div
-        className="w-[90vw] max-w-[1600px] flex items-center justify-between px-6 py-3 rounded-[20px] border border-black/[0.07] shadow-sm"
-        style={{ backgroundColor: "rgba(250,250,248,0.85)", backdropFilter: "blur(16px)" }}
+        className="w-full max-w-[1600px] relative"
+        style={{ width: "92vw" }}
       >
-        <span
-          className="text-xl font-black tracking-tight cursor-pointer"
-          style={{ color: "#1B4332" }}
-          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          data-testid="nav-logo"
+        {/* Main bar */}
+        <div
+          className="flex items-center justify-between px-5 sm:px-6 py-3 rounded-[18px] sm:rounded-[20px] border border-black/[0.07] shadow-sm"
+          style={{ backgroundColor: "rgba(250,250,248,0.92)", backdropFilter: "blur(16px)" }}
         >
-          Naiki
-        </span>
+          <span
+            className="text-lg sm:text-xl font-black tracking-tight cursor-pointer"
+            style={{ color: "#1B4332" }}
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            data-testid="nav-logo"
+          >
+            Naiki
+          </span>
 
-        <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-foreground/70">
-          <button
-            onClick={() => scrollTo("mission")}
-            className="hover:text-foreground transition-colors cursor-pointer bg-transparent border-none p-0"
-            data-testid="nav-mission"
-          >
-            Mission
-          </button>
-          <button
-            onClick={() => scrollTo("programs")}
-            className="hover:text-foreground transition-colors cursor-pointer bg-transparent border-none p-0"
-            data-testid="nav-programs"
-          >
-            Programs
-          </button>
-          <button
-            onClick={() => scrollTo("impact")}
-            className="hover:text-foreground transition-colors cursor-pointer bg-transparent border-none p-0"
-            data-testid="nav-impact"
-          >
-            Impact
-          </button>
-          <button
-            onClick={() => scrollTo("stories")}
-            className="hover:text-foreground transition-colors cursor-pointer bg-transparent border-none p-0"
-            data-testid="nav-stories"
-          >
-            Stories
-          </button>
-        </nav>
+          {/* Desktop nav */}
+          <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-foreground/70">
+            {navItems.map(({ label, id }) => (
+              <button
+                key={id}
+                onClick={() => scrollTo(id)}
+                className="hover:text-foreground transition-colors cursor-pointer bg-transparent border-none p-0"
+                data-testid={`nav-${id}`}
+              >
+                {label}
+              </button>
+            ))}
+          </nav>
 
-        <Button
-          className="rounded-full px-7 font-bold text-sm h-9"
-          style={{ backgroundColor: "#E85D04", color: "#fff", border: "none" }}
-          data-testid="nav-donate-btn"
-        >
-          Donate
-        </Button>
+          <div className="flex items-center gap-3">
+            <Button
+              className="rounded-full px-5 sm:px-7 font-bold text-sm h-9 border-none"
+              style={{ backgroundColor: "#E85D04", color: "#fff" }}
+              data-testid="nav-donate-btn"
+            >
+              Donate
+            </Button>
+
+            {/* Mobile hamburger */}
+            <button
+              className="md:hidden flex items-center justify-center w-9 h-9 rounded-full border-0 cursor-pointer transition-colors"
+              style={{ backgroundColor: "rgba(0,0,0,0.05)" }}
+              onClick={() => setOpen(p => !p)}
+              aria-label="Toggle menu"
+              data-testid="nav-hamburger"
+            >
+              {open ? <X size={18} /> : <Menu size={18} />}
+            </button>
+          </div>
+        </div>
+
+        {/* Mobile dropdown */}
+        <AnimatePresence>
+          {open && (
+            <motion.div
+              initial={{ opacity: 0, y: -8, scale: 0.97 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -8, scale: 0.97 }}
+              transition={{ duration: 0.2, ease: "easeOut" }}
+              className="absolute top-full left-0 right-0 mt-2 rounded-[18px] border border-black/[0.07] shadow-xl p-5 flex flex-col gap-1"
+              style={{ backgroundColor: "rgba(250,250,248,0.97)", backdropFilter: "blur(20px)" }}
+            >
+              {navItems.map(({ label, id }) => (
+                <button
+                  key={id}
+                  onClick={() => scrollTo(id)}
+                  className="text-left text-base font-semibold px-4 py-3 rounded-xl hover:bg-black/[0.04] transition-colors cursor-pointer bg-transparent border-none w-full"
+                  style={{ color: "#111827" }}
+                  data-testid={`mobile-nav-${id}`}
+                >
+                  {label}
+                </button>
+              ))}
+              <div className="pt-3 border-t mt-2" style={{ borderColor: "rgba(0,0,0,0.07)" }}>
+                <Button
+                  className="w-full rounded-xl font-bold text-sm h-11 border-none"
+                  style={{ backgroundColor: "#E85D04", color: "#fff" }}
+                >
+                  Donate to Naiki
+                </Button>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </motion.header>
   );

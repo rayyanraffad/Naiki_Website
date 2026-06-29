@@ -29,18 +29,18 @@ const stats = [
 
 export default function Impact() {
   return (
-    <section id="impact" className="h-full flex flex-col px-10 md:px-14 py-10 relative overflow-hidden" style={{ backgroundColor: "#FAFAF8" }}>
+    <section id="impact" className="lg:h-full flex flex-col px-6 sm:px-10 md:px-14 py-8 md:py-10 relative overflow-hidden" style={{ backgroundColor: "#FAFAF8" }}>
       {/* Ghost text */}
       <div
         aria-hidden="true"
         className="pointer-events-none select-none absolute bottom-0 right-0 font-black leading-none"
-        style={{ fontSize: "clamp(10rem,24vw,22rem)", color: "rgba(27,67,50,0.04)", lineHeight: 1 }}
+        style={{ fontSize: "clamp(8rem,24vw,22rem)", color: "rgba(27,67,50,0.04)", lineHeight: 1 }}
       >
         DATA
       </div>
 
       {/* Top bar */}
-      <div className="relative flex items-center justify-between mb-6">
+      <div className="relative flex items-center justify-between mb-4 sm:mb-6">
         <span className="text-[11px] font-black tracking-[0.26em] uppercase" style={{ color: "#1B4332" }}>Measurable Impact</span>
         <span className="text-[11px] font-medium tracking-widest text-muted-foreground hidden md:block">05 / 09</span>
       </div>
@@ -51,14 +51,14 @@ export default function Impact() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="relative font-black tracking-tighter leading-tight mb-8"
-        style={{ fontSize: "clamp(2rem, 4.5vw, 4rem)", color: "#111827", maxWidth: "600px" }}
+        className="relative font-black tracking-tighter leading-tight mb-6 sm:mb-8"
+        style={{ fontSize: "clamp(1.75rem, 4.5vw, 4rem)", color: "#111827", maxWidth: "600px" }}
       >
         Numbers that represent shifted trajectories.
       </motion.h2>
 
       {/* Stat cards */}
-      <div className="relative flex-1 grid grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className="relative grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:flex-1">
         {stats.map((s, i) => (
           <motion.div
             key={i}
@@ -66,22 +66,22 @@ export default function Impact() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.55, delay: i * 0.09 }}
-            className="flex flex-col justify-between rounded-[22px] p-6 md:p-8"
+            className="flex flex-col justify-between rounded-[18px] sm:rounded-[22px] p-5 sm:p-6 md:p-8"
             style={{
               backgroundColor: i === 0 ? "#1B4332" : "rgba(27,67,50,0.05)",
               border: i === 0 ? "none" : "1px solid rgba(0,0,0,0.06)",
             }}
           >
             <div
-              className="font-black tracking-tighter leading-none mb-3 flex items-baseline gap-0.5"
-              style={{ fontSize: "clamp(2.5rem, 5.5vw, 5rem)", color: i === 0 ? "#E85D04" : "#1B4332" }}
+              className="font-black tracking-tighter leading-none mb-2 sm:mb-3 flex items-baseline gap-0.5"
+              style={{ fontSize: "clamp(2rem, 5.5vw, 5rem)", color: i === 0 ? "#E85D04" : "#1B4332" }}
             >
               <Counter to={s.value} />
               <span>{s.suffix}</span>
             </div>
             <div>
-              <div className="font-bold text-base mb-1" style={{ color: i === 0 ? "#fff" : "#111827" }}>{s.label}</div>
-              <div className="text-sm leading-relaxed" style={{ color: i === 0 ? "rgba(255,255,255,0.5)" : "#9CA3AF" }}>{s.desc}</div>
+              <div className="font-bold text-sm sm:text-base mb-1" style={{ color: i === 0 ? "#fff" : "#111827" }}>{s.label}</div>
+              <div className="text-xs sm:text-sm leading-relaxed" style={{ color: i === 0 ? "rgba(255,255,255,0.5)" : "#9CA3AF" }}>{s.desc}</div>
             </div>
           </motion.div>
         ))}

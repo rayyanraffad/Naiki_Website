@@ -28,14 +28,37 @@ export default function Programs() {
   const [active, setActive] = useState(0);
 
   return (
-    <section id="programs" className="h-full flex flex-col lg:flex-row overflow-hidden">
-      {/* ── Left: tab list ── */}
+    <section id="programs" className="lg:h-full flex flex-col lg:flex-row overflow-hidden">
+      {/* ── Image panel — top on mobile, right on desktop ── */}
+      <div className="order-1 lg:order-2 flex-[60] relative overflow-hidden" style={{ minHeight: "clamp(200px, 45vw, 500px)" }}>
+        {programs.map((p, i) => (
+          <motion.div
+            key={p.title}
+            className="absolute inset-0"
+            initial={false}
+            animate={{ opacity: active === i ? 1 : 0 }}
+            transition={{ duration: 0.45, ease: "easeInOut" }}
+          >
+            <img src={p.img} alt={p.alt} className="w-full h-full object-cover" />
+            <div
+              className="absolute inset-x-0 bottom-0 h-2/5 pointer-events-none"
+              style={{ background: "linear-gradient(to top, rgba(0,0,0,0.65), transparent)" }}
+            />
+            <div className="absolute bottom-6 left-6 sm:bottom-8 sm:left-10 text-white">
+              <div className="text-[11px] font-black tracking-widest uppercase opacity-55 mb-1">{p.tag}</div>
+              <div className="text-2xl sm:text-3xl md:text-4xl font-black">{p.title}</div>
+            </div>
+          </motion.div>
+        ))}
+      </div>
+
+      {/* ── Tab list — below image on mobile, left on desktop ── */}
       <div
-        className="flex-[40] flex flex-col px-10 md:px-12 py-10 border-r"
+        className="order-2 lg:order-1 flex-[40] flex flex-col px-6 sm:px-10 md:px-12 py-6 sm:py-8 md:py-10 border-t lg:border-t-0 lg:border-r"
         style={{ borderColor: "rgba(0,0,0,0.07)", backgroundColor: "#FAFAF8" }}
       >
         {/* Header */}
-        <div className="flex items-center justify-between mb-6">
+        <div className="flex items-center justify-between mb-4 sm:mb-6">
           <span className="text-[11px] font-black tracking-[0.26em] uppercase" style={{ color: "#1B4332" }}>Our Work</span>
           <span className="text-[11px] font-medium tracking-widest text-muted-foreground hidden md:block">04 / 09</span>
         </div>
@@ -44,14 +67,14 @@ export default function Programs() {
           initial={{ opacity: 0, y: 14 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="font-black tracking-tighter leading-[0.9] mb-8"
-          style={{ fontSize: "clamp(2.2rem, 4.5vw, 4rem)", color: "#111827" }}
+          className="font-black tracking-tighter leading-[0.9] mb-5 sm:mb-8"
+          style={{ fontSize: "clamp(1.9rem, 4.5vw, 4rem)", color: "#111827" }}
         >
           Four pillars<br />of action.
         </motion.h2>
 
         {/* Tabs */}
-        <div className="flex-1 flex flex-col justify-center space-y-1">
+        <div className="lg:flex-1 flex flex-col justify-center space-y-1">
           {programs.map((p, i) => (
             <motion.button
               key={p.title}
@@ -60,7 +83,7 @@ export default function Programs() {
               viewport={{ once: true }}
               transition={{ delay: i * 0.07 }}
               onClick={() => setActive(i)}
-              className="w-full text-left flex items-center gap-4 px-5 py-4 rounded-2xl transition-all duration-250 cursor-pointer border-0"
+              className="w-full text-left flex items-center gap-4 px-4 sm:px-5 py-3 sm:py-4 rounded-2xl transition-all duration-250 cursor-pointer border-0"
               style={{ backgroundColor: active === i ? "#1B4332" : "transparent" }}
               data-testid={`program-tab-${p.title.toLowerCase().replace(/ /g, "-")}`}
             >
@@ -71,14 +94,14 @@ export default function Programs() {
                 {p.num}
               </span>
               <div className="flex-1 min-w-0">
-                <div className="text-base font-bold" style={{ color: active === i ? "#fff" : "#111827" }}>
+                <div className="text-sm sm:text-base font-bold" style={{ color: active === i ? "#fff" : "#111827" }}>
                   {p.title}
                 </div>
                 {active === i && (
                   <motion.div
                     initial={{ opacity: 0, height: 0 }}
                     animate={{ opacity: 1, height: "auto" }}
-                    className="text-sm mt-1 leading-relaxed"
+                    className="text-xs sm:text-sm mt-1 leading-relaxed"
                     style={{ color: "rgba(255,255,255,0.55)" }}
                   >
                     {p.desc}
@@ -99,7 +122,7 @@ export default function Programs() {
         </div>
 
         {/* Footer link */}
-        <div className="pt-5 border-t" style={{ borderColor: "rgba(0,0,0,0.07)" }}>
+        <div className="pt-4 sm:pt-5 border-t mt-4" style={{ borderColor: "rgba(0,0,0,0.07)" }}>
           <button
             className="text-sm font-bold flex items-center gap-2 hover:gap-3 transition-all bg-transparent border-none p-0 cursor-pointer"
             style={{ color: "#1B4332" }}
@@ -108,29 +131,6 @@ export default function Programs() {
             View all programs <span aria-hidden="true">&rarr;</span>
           </button>
         </div>
-      </div>
-
-      {/* ── Right: image crossfade ── */}
-      <div className="flex-[60] relative overflow-hidden min-h-[220px]">
-        {programs.map((p, i) => (
-          <motion.div
-            key={p.title}
-            className="absolute inset-0"
-            initial={false}
-            animate={{ opacity: active === i ? 1 : 0 }}
-            transition={{ duration: 0.45, ease: "easeInOut" }}
-          >
-            <img src={p.img} alt={p.alt} className="w-full h-full object-cover" />
-            <div
-              className="absolute inset-x-0 bottom-0 h-2/5 pointer-events-none"
-              style={{ background: "linear-gradient(to top, rgba(0,0,0,0.65), transparent)" }}
-            />
-            <div className="absolute bottom-8 left-10 text-white">
-              <div className="text-[11px] font-black tracking-widest uppercase opacity-55 mb-1">{p.tag}</div>
-              <div className="text-3xl md:text-4xl font-black">{p.title}</div>
-            </div>
-          </motion.div>
-        ))}
       </div>
     </section>
   );

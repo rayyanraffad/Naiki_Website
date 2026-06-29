@@ -3,14 +3,14 @@ import { motion } from "framer-motion";
 export default function ProblemSolution() {
   return (
     <section
-      className="h-full flex flex-col px-10 md:px-14 py-10 relative overflow-hidden"
+      className="lg:h-full flex flex-col px-6 sm:px-10 md:px-14 py-8 md:py-10 relative overflow-hidden"
       style={{ backgroundColor: "#1B4332" }}
     >
       {/* Ghost background number */}
       <div
         aria-hidden="true"
         className="pointer-events-none select-none absolute inset-0 flex items-center justify-end pr-8 font-black leading-none"
-        style={{ fontSize: "clamp(14rem,38vw,32rem)", color: "rgba(255,255,255,0.04)", lineHeight: 1 }}
+        style={{ fontSize: "clamp(10rem,38vw,32rem)", color: "rgba(255,255,255,0.04)", lineHeight: 1 }}
       >
         68
       </div>
@@ -31,30 +31,33 @@ export default function ProblemSolution() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.7 }}
-        className="relative flex-1 flex flex-col md:flex-row gap-10 md:gap-0 items-start justify-center"
+        className="relative flex-1 flex flex-col sm:flex-row gap-8 sm:gap-0 items-start justify-center py-6"
       >
         {/* Stat 1 */}
-        <div className="flex-1 flex flex-col justify-center md:border-r md:pr-12" style={{ borderColor: "rgba(255,255,255,0.1)" }}>
+        <div className="flex-1 flex flex-col justify-center sm:border-r sm:pr-10 md:pr-12" style={{ borderColor: "rgba(255,255,255,0.1)" }}>
           <div
-            className="font-black tracking-tighter leading-none mb-4"
-            style={{ fontSize: "clamp(5rem, 14vw, 13rem)", color: "#E85D04" }}
+            className="font-black tracking-tighter leading-none mb-3 sm:mb-4"
+            style={{ fontSize: "clamp(4rem, 14vw, 13rem)", color: "#E85D04" }}
           >
             2.4M
           </div>
-          <p className="text-base md:text-lg leading-relaxed max-w-sm" style={{ color: "rgba(255,255,255,0.6)" }}>
+          <p className="text-sm sm:text-base md:text-lg leading-relaxed max-w-sm" style={{ color: "rgba(255,255,255,0.6)" }}>
             Youth in our target regions lack access to formal leadership and skill-building programs outside the standard curriculum.
           </p>
         </div>
 
+        {/* Divider on mobile */}
+        <div className="sm:hidden w-full border-t" style={{ borderColor: "rgba(255,255,255,0.1)" }} />
+
         {/* Stat 2 */}
-        <div className="flex-1 flex flex-col justify-center md:pl-12">
+        <div className="flex-1 flex flex-col justify-center sm:pl-10 md:pl-12">
           <div
-            className="font-black tracking-tighter leading-none mb-4"
-            style={{ fontSize: "clamp(5rem, 14vw, 13rem)", color: "rgba(255,255,255,0.18)" }}
+            className="font-black tracking-tighter leading-none mb-3 sm:mb-4"
+            style={{ fontSize: "clamp(4rem, 14vw, 13rem)", color: "rgba(255,255,255,0.18)" }}
           >
             68%
           </div>
-          <p className="text-base md:text-lg leading-relaxed max-w-sm" style={{ color: "rgba(255,255,255,0.6)" }}>
+          <p className="text-sm sm:text-base md:text-lg leading-relaxed max-w-sm" style={{ color: "rgba(255,255,255,0.6)" }}>
             Of community initiatives fail due to a lack of youth integration and perspective in the planning phases.
           </p>
         </div>
@@ -71,7 +74,7 @@ export default function ProblemSolution() {
       >
         <p
           className="font-semibold leading-snug max-w-3xl"
-          style={{ fontSize: "clamp(1.1rem, 2.2vw, 1.75rem)", color: "rgba(255,255,255,0.82)" }}
+          style={{ fontSize: "clamp(1rem, 2.2vw, 1.75rem)", color: "rgba(255,255,255,0.82)" }}
         >
           The solution requires radical participation — equipping the next generation with the exact tools to dismantle the barriers they face.
         </p>
