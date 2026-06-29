@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
-import { SiInstagram, SiX, SiFacebook } from "react-icons/si";
-import { FaLinkedinIn } from "react-icons/fa";
+import { SiInstagram } from "react-icons/si";
 
 export default function Footer() {
   return (
@@ -78,23 +77,17 @@ export default function Footer() {
             <div>
               <p className="font-bold text-white mb-3">Follow</p>
               <div className="flex flex-wrap gap-3">
-                {[
-                  { icon: <SiInstagram size={17} />, label: "Instagram", testid: "footer-instagram" },
-                  { icon: <SiX size={17} />, label: "Twitter", testid: "footer-twitter" },
-                  { icon: <SiFacebook size={17} />, label: "Facebook", testid: "footer-facebook" },
-                  { icon: <FaLinkedinIn size={17} />, label: "LinkedIn", testid: "footer-linkedin" },
-                ].map(({ icon, label, testid }) => (
-                  <a
-                    key={label}
-                    href="#"
-                    aria-label={label}
-                    data-testid={testid}
-                    className="hover:text-white transition-colors"
-                    style={{ color: "rgba(200,149,108,0.5)" }}
-                  >
-                    {icon}
-                  </a>
-                ))}
+                <a
+                  href="https://www.instagram.com/naiki.ngo/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Instagram"
+                  data-testid="footer-instagram"
+                  className="hover:text-white transition-colors"
+                  style={{ color: "rgba(200,149,108,0.5)" }}
+                >
+                  <SiInstagram size={17} />
+                </a>
               </div>
             </div>
           </div>
