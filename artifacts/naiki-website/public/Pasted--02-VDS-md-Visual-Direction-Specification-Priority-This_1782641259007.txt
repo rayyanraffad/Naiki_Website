@@ -1,0 +1,253 @@
+# 02_VDS.md — Visual Direction Specification
+
+# Priority
+
+This document takes precedence over generic design conventions.
+
+Whenever there is uncertainty, follow these rules.
+
+---
+
+# Design Philosophy
+
+Create a premium editorial experience inspired by the supplied reference video.
+
+Do not imitate the assets.
+
+Recreate the feeling.
+
+Keywords
+
+* Editorial
+* Swiss Grid
+* Premium
+* Magazine
+* Floating Canvas
+* Luxury Whitespace
+* Storytelling
+* Refined Motion
+
+Never use Neo-Brutalism.
+
+---
+
+# Global Layout
+
+The website exists inside ONE persistent floating canvas.
+
+Rules
+
+* Width: 90vw
+* Max Width: 1600px
+* Radius: 32px
+* Browser background always visible
+* Soft shadow
+* Thin border
+* White canvas
+* Warm off-white browser background
+
+No section may become full width.
+
+---
+
+# Composition Rules
+
+Every viewport must be unique.
+
+Avoid repeated layouts.
+
+Alternate between
+
+* Split layouts
+* Offset typography
+* Large photography
+* Editorial captions
+* Asymmetric grids
+* Overlapping compositions
+
+No repeated four-card grids.
+
+---
+
+# Typography Rules
+
+Typography is the primary visual element.
+
+Desktop Hero
+
+96–128px
+
+Tablet
+
+72px
+
+Mobile
+
+48px
+
+Maximum
+
+8 words.
+
+Headlines should occupy roughly half the viewport width.
+
+---
+
+# Card System
+
+Radius
+
+32px
+
+Padding
+
+48px
+
+Soft shadow
+
+Hover
+
+Lift 8px
+
+Transition
+
+300ms
+
+Cards should feel tactile rather than flat.
+
+---
+
+# Whitespace
+
+Sections
+
+120–180px apart
+
+Cards
+
+48px internal padding
+
+Never compress spacing.
+
+Whitespace is part of the design.
+
+---
+
+# Photography
+
+Only authentic documentary-style imagery.
+
+Preferred
+
+* Students
+* Volunteers
+* Workshops
+* Community
+* Classrooms
+
+Avoid corporate stock imagery.
+
+---
+
+# Motion
+
+Every section animates once.
+
+Allowed
+
+* Fade
+* Reveal
+* Stagger
+* Parallax
+* Counter animation
+
+Avoid
+
+* Flashy motion
+* Bounce effects
+* Excessive scaling
+
+---
+
+# Viewport Rules
+
+Viewport 1
+
+Hero
+
+Viewport 2
+
+Mission
+
+Viewport 3
+
+Programs
+
+Viewport 4
+
+Impact
+
+Viewport 5
+
+Stories
+
+Viewport 6
+
+Gallery
+
+Viewport 7
+
+Get Involved
+
+Viewport 8
+
+Donate
+
+Viewport 9
+
+Footer
+
+Every viewport should have a different composition.
+
+---
+
+# AI Constraints
+
+Never generate:
+
+* Bootstrap layouts
+* SaaS layouts
+* Generic Tailwind landing pages
+* Repeated card grids
+* Equal-height sections
+* Tiny typography
+* Minimal whitespace
+
+Always prioritize
+
+* Editorial storytelling
+* Floating canvas
+* Large typography
+* Magazine composition
+* Premium motion
+* Emotional impact
+
+---
+
+# Final Validation Checklist
+
+Before considering the design complete, verify:
+
+□ Every viewport is visually distinct.
+
+□ Typography leads the composition.
+
+□ The floating canvas persists throughout the experience.
+
+□ Whitespace remains generous.
+
+□ Cards feel premium.
+
+□ The design resembles an Awwwards-quality editorial website rather than a standard NGO landing page.
+
+If any answer is "No", redesign the affected section before implementation.

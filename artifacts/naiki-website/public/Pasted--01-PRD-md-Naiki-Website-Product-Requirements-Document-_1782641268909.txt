@@ -1,0 +1,138 @@
+# 01_PRD.md — Naiki Website Product Requirements Document (AI Optimized)
+
+# Project Objective
+
+Create an award-winning editorial website for **Naiki** that builds trust, inspires action, and converts visitors into donors, volunteers, and partners.
+
+The website should communicate Naiki's mission through storytelling rather than traditional NGO layouts.
+
+Mission:
+
+**Breaking barriers with education & outreach. Empowering youth with voice, leadership and skills.**
+
+---
+
+# Primary Goals
+
+1. Build trust immediately.
+2. Tell Naiki's story emotionally.
+3. Showcase measurable impact.
+4. Increase volunteer registrations.
+5. Increase donations.
+6. Position Naiki as a modern, credible nonprofit.
+
+---
+
+# Target Audience
+
+* Donors
+* Volunteers
+* Youth
+* Educational institutions
+* NGOs
+* Corporate partners
+* Sponsors
+
+---
+
+# Homepage Story Flow
+
+Visitors should experience the website in this order:
+
+1. Emotional Hero
+2. Why Naiki Exists
+3. The Problem
+4. Our Solution
+5. Programs
+6. Community Impact
+7. Success Stories
+8. Gallery
+9. Get Involved
+10. Donate
+11. Contact
+
+Never change this order without a compelling UX reason.
+
+---
+
+# Functional Requirements
+
+Navigation
+
+* Sticky
+* Transparent initially
+* Rounded Donate button
+* Smooth scrolling
+
+Hero
+
+* Full viewport
+* Primary CTA: Donate
+* Secondary CTA: Get Involved
+
+Programs
+
+* Four editorial panels
+* Education
+* Leadership
+* Community Outreach
+* Volunteerism
+
+Impact
+
+* Animated counters
+* Timeline
+* Visual storytelling
+
+Stories
+
+* Carousel
+* Portrait photography
+* Quotes
+
+Gallery
+
+* Masonry layout
+* Lightbox
+
+Donation
+
+* Trust-first layout
+* Impact-based donation messaging
+
+Footer
+
+* Newsletter
+* Social links
+* Contact
+* Copyright
+
+---
+
+# Technical Requirements
+
+* Next.js
+* TypeScript
+* Tailwind CSS
+* Framer Motion
+* GSAP
+* Lenis
+* Responsive
+* WCAG AA
+* SEO optimized
+* CMS ready
+
+---
+
+# Quality Gate
+
+The website should never resemble:
+
+* Bootstrap
+* Generic NGO templates
+* SaaS landing pages
+* Startup templates
+
+Every viewport should feel individually designed.
+
+Every section should contribute to a cohesive editorial narrative.
